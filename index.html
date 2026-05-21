@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Spent</title>
+  <meta name="description" content="Smart Spent prototype showing how a new customer creates a budget plan from income, bills, savings, and spending money.">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#347f3f">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Smart Spent">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="prototype-shell">
+    <aside class="sidebar">
+      <img class="brand-logo" src="SmartSpentLogo.jpg" alt="Smart Spent logo">
+
+      <div class="intro-copy">
+        <p>Monthly budget setup</p>
+        <h1>A clearer way to manage income, bills, and spending.</h1>
+      </div>
+
+      <nav class="step-nav" aria-label="Prototype steps">
+        <button class="step-link active" type="button" data-screen="start"><span>1</span>Start</button>
+        <button class="step-link" type="button" data-screen="income"><span>2</span>Income</button>
+        <button class="step-link" type="button" data-screen="split"><span>3</span>Split Money</button>
+        <button class="step-link" type="button" data-screen="bills"><span>4</span>Bills</button>
+        <button class="step-link" type="button" data-screen="plan"><span>5</span>Smart Plan</button>
+        <button class="step-link" type="button" data-screen="track"><span>6</span>Track</button>
+      </nav>
+    </aside>
+
+    <section class="workspace">
+      <section class="screen active" data-panel="start">
+        <div class="hero-panel">
+          <p class="eyebrow">New customer setup</p>
+          <h2>Build a monthly money plan in a few simple steps.</h2>
+          <p>
+            Smart Spent helps users organise their income into bills, savings, and everyday spending before the month begins.
+          </p>
+          <div class="hero-actions">
+            <button class="primary-action" type="button" data-screen="income">Start Setup</button>
+          </div>
+          
+        </div>
+
+        <div class="concept-grid">
+          <article>
+            <span>1</span>
+            <h3>Enter income</h3>
+            <p>The customer adds how much money they receive each month.</p>
+          </article>
+          <article>
+            <span>2</span>
+            <h3>Split money</h3>
+            <p>The customer chooses money for bills, savings, and spending.</p>
+          </article>
+          <article>
+            <span>3</span>
+            <h3>Track progress</h3>
+            <p>The app shows what is left and gives suggestions to save more.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="screen" data-panel="income">
+        <div class="screen-heading">
+          <p class="eyebrow">Step 1</p>
+          <h2>Enter your monthly income</h2>
+          <span>This is the money the customer has available before planning.</span>
+        </div>
+
+        <div class="form-grid">
+          <article class="form-card">
+            <label>
+              Customer name
+              <input id="customerName" type="text" placeholder="Enter customer name">
+            </label>
+            <label>
+              Monthly income
+              <input id="monthlyIncome" type="number" min="0" placeholder="0">
+            </label>
+            <label>
+              Main saving goal
+              <input id="savingGoalName" type="text" placeholder="e.g. Emergency fund">
+            </label>
+            <button class="primary-action" type="button" data-screen="split">Continue</button>
+          </article>
+
+          <article class="guidance-card">
+            <p>Helpful tip</p>
+            <h3>Start with realistic numbers.</h3>
+            <span>The first plan does not need to be perfect. Users can adjust budgets once they understand their spending pattern.</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="screen" data-panel="split">
+        <div class="screen-heading">
+          <p class="eyebrow">Step 2</p>
+          <h2>Split the income</h2>
+          <span>The customer decides how much money should go into each area.</span>
+        </div>
+
+        <div class="form-grid">
+          <article class="form-card">
+            <label>
+              Bills budget
+              <input id="billsBudget" type="number" min="0" placeholder="0">
+            </label>
+            <label>
+              Savings target
+              <input id="savingsBudget" type="number" min="0" placeholder="0">
+            </label>
+            <label>
+              Food budget
+              <input id="foodBudget" type="number" min="0" placeholder="0">
+            </label>
+            <label>
+              Transport budget
+              <input id="transportBudget" type="number" min="0" placeholder="0">
+            </label>
+            <label>
+              Entertainment budget
+              <input id="entertainmentBudget" type="number" min="0" placeholder="0">
+            </label>
+            <button class="primary-action" type="button" data-screen="bills">Add Bills</button>
+          </article>
+
+          <article class="summary-card">
+            <p>Money left after this split</p>
+            <strong id="remainingAfterSplit">EUR 0</strong>
+            <span id="splitMessage">This can be kept as flexible money or added to savings.</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="screen" data-panel="bills">
+        <div class="screen-heading">
+          <p class="eyebrow">Step 3</p>
+          <h2>Add bills that need to be paid</h2>
+          <span>The app reminds the customer before bills are due.</span>
+        </div>
+
+        <div class="form-grid">
+          <article class="form-card">
+            <label>
+              Bill 1 name
+              <input id="billOneName" type="text" placeholder="e.g. Phone bill">
+            </label>
+            <label>
+              Bill 1 amount
+              <input id="billOneAmount" type="number" min="0" placeholder="0">
+            </label>
+            <label>
+              Bill 2 name
+              <input id="billTwoName" type="text" placeholder="e.g. Gym membership">
+            </label>
+            <label>
+              Bill 2 amount
+              <input id="billTwoAmount" type="number" min="0" placeholder="0">
+            </label>
+            <label>
+              Bill 3 name
+              <input id="billThreeName" type="text" placeholder="e.g. Streaming">
+            </label>
+            <label>
+              Bill 3 amount
+              <input id="billThreeAmount" type="number" min="0" placeholder="0">
+            </label>
+            <button class="primary-action" type="button" data-screen="plan">Create Smart Plan</button>
+          </article>
+
+          <article class="info-card">
+            <p>Total bills entered</p>
+            <h3 id="enteredBillsTotal">EUR 0</h3>
+            <span>Smart Spent compares actual bills with the bills budget.</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="screen" data-panel="plan">
+        <div class="screen-heading">
+          <p class="eyebrow">Step 4</p>
+          <h2>Your smart money plan</h2>
+          <span>The app turns the customer's details into a clear monthly plan.</span>
+        </div>
+
+        <div class="dashboard-grid">
+          <article class="money-card main">
+            <p>Monthly income</p>
+            <strong id="planIncome">EUR 0</strong>
+            <span id="planName">Plan for customer</span>
+          </article>
+          <article class="money-card">
+            <p>Bills</p>
+            <strong id="planBills">EUR 0</strong>
+            <span>Protected for payments</span>
+          </article>
+          <article class="money-card">
+            <p>Savings</p>
+            <strong id="planSavings">EUR 0</strong>
+            <span id="planGoal">Savings goal</span>
+          </article>
+          <article class="money-card">
+            <p>Flexible money</p>
+            <strong id="planFlexible">EUR 0</strong>
+            <span>Can be saved or used carefully</span>
+          </article>
+        </div>
+
+        <div class="content-grid">
+          <article class="panel">
+            <div class="panel-title">
+              <h3>Spending limits</h3>
+              <span>Monthly</span>
+            </div>
+            <div class="budget-list">
+              <div class="budget-row">
+                <span>Food</span>
+                <i><b id="foodBar"></b></i>
+                <strong id="foodLimit">EUR 0</strong>
+              </div>
+              <div class="budget-row">
+                <span>Transport</span>
+                <i><b id="transportBar"></b></i>
+                <strong id="transportLimit">EUR 0</strong>
+              </div>
+              <div class="budget-row">
+                <span>Entertainment</span>
+                <i><b id="entertainmentBar"></b></i>
+                <strong id="entertainmentLimit">EUR 0</strong>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel advice">
+            <p>Smart suggestion</p>
+            <h3 id="smartSuggestion">Your plan is balanced. Keep flexible money separate so you do not overspend.</h3>
+            <span>Smart Spent helps the customer make better decisions before spending.</span>
+          </article>
+        </div>
+
+        <button class="primary-action wide-action" type="button" data-screen="track">Start Tracking</button>
+      </section>
+
+      <section class="screen" data-panel="track">
+        <div class="screen-heading">
+          <p class="eyebrow">Step 5</p>
+          <h2>Track spending wisely</h2>
+          <span>After setup, the app tracks spending against the plan.</span>
+        </div>
+
+        <div class="track-layout">
+          <article class="form-card">
+            <label>
+              New expense amount
+              <input id="newExpenseAmount" type="number" min="0" placeholder="0">
+            </label>
+            <label>
+              Category
+              <select id="newExpenseCategory">
+                <option value="food">Food</option>
+                <option value="transport">Transport</option>
+                <option value="entertainment">Entertainment</option>
+              </select>
+            </label>
+            <button class="primary-action" id="previewExpense" type="button">Preview Expense</button>
+          </article>
+
+          <article class="panel advice">
+            <p>Spending check</p>
+            <h3 id="expensePreview">Enter an expense to preview how it affects the budget.</h3>
+            <span id="expenseAdvice">Smart Spent checks the budget before the customer spends more.</span>
+          </article>
+        </div>
+
+        <div class="bill-list">
+          <article>
+            <p id="billOneOutput">Bill 1</p>
+            <strong id="billOneOutputAmount">EUR 0</strong>
+            <span>Reminder ready</span>
+          </article>
+          <article>
+            <p id="billTwoOutput">Bill 2</p>
+            <strong id="billTwoOutputAmount">EUR 0</strong>
+            <span>Reminder ready</span>
+          </article>
+          <article>
+            <p id="billThreeOutput">Bill 3</p>
+            <strong id="billThreeOutputAmount">EUR 0</strong>
+            <span>Reminder ready</span>
+          </article>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+          .then(reg => console.log('Smart Spent: service worker registered', reg.scope))
+          .catch(err => console.warn('Smart Spent: service worker failed', err));
+      });
+    }
+  </script>
+</body>
+</html>
