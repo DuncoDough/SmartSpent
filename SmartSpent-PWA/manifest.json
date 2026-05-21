@@ -1,0 +1,25 @@
+{
+  "name": "Smart Spent",
+  "short_name": "SmartSpent",
+  "description": "A clearer way to manage income, bills, and spending.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f3f7f4",
+  "theme_color": "#347f3f",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["finance", "productivity"]
+}
